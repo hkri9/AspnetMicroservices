@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Basket.API.GrpcService
+namespace Basket.API.GrpcServices
 {
     public class DiscountGrpcService
     {
@@ -12,13 +12,13 @@ namespace Basket.API.GrpcService
 
         public DiscountGrpcService(DiscountProtoService.DiscountProtoServiceClient discountProtoService)
         {
-            this._discountProtoService = discountProtoService;
+            _discountProtoService = discountProtoService ?? throw new ArgumentNullException(nameof(discountProtoService));
         }
 
         public async Task<CouponModel> GetDiscount(string productName)
         {
-            var dicountRequest = new GetDiscountRequest { ProductName = productName };
-            return await _discountProtoService.GetDiscountAsync(dicountRequest);
+            var discountRequest = new GetDiscountRequest { ProductName = productName };
+            return await _discountProtoService.GetDiscountAsync(discountRequest);
         }
     }
 }

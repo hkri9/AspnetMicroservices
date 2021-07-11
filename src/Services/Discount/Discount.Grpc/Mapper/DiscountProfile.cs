@@ -11,9 +11,8 @@ namespace Discount.Grpc.Mapper
     public class DiscountProfile : Profile
     {
         public DiscountProfile()
-        {
-            CreateMap<Coupon, CouponModel>().ReverseMap(); //the members are almost the same, so we don't specify member specific configuration
-
+        {//the members are almost the same, so we don't specify member specific configuration
+            CreateMap<Coupon, CouponModel>().ReverseMap();
         }
     }
 }

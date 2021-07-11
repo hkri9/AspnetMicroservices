@@ -3,6 +3,7 @@ using Catalog.API.Entities;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Catalog.API.Repositories
@@ -14,7 +15,7 @@ namespace Catalog.API.Repositories
         public ProductRepository(ICatalogContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-        }
+        }        
 
         public async Task<IEnumerable<Product>> GetProducts()
         {

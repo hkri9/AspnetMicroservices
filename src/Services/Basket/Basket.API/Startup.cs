@@ -1,4 +1,4 @@
-using Basket.API.GrpcService;
+using Basket.API.GrpcServices;
 using Basket.API.Repositories;
 using Discount.Grpc.Protos;
 using MassTransit;
@@ -31,7 +31,7 @@ namespace Basket.API
             });
 
             // General Configuration
-            services.AddScoped<IBasketRepository,BasketRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddAutoMapper(typeof(Startup));
 
             // Grpc Configuration
@@ -46,6 +46,7 @@ namespace Basket.API
                 });
             });
             services.AddMassTransitHostedService();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

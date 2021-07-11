@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Basket.API.Entities;
-using Basket.API.GrpcService;
+using Basket.API.GrpcServices;
 using Basket.API.Repositories;
 using EventBus.Messages.Events;
 using MassTransit;
@@ -78,11 +78,10 @@ namespace Basket.API.Controllers
                 return BadRequest();
             }
 
-            //send checkout event to rabbitmq
+            // send checkout event to rabbitmq
             var eventMessage = _mapper.Map<BasketCheckoutEvent>(basketCheckout);
             eventMessage.TotalPrice = basket.TotalPrice;
             await _publishEndpoint.Publish(eventMessage);
-
 
             // remove the basket
             await _repository.DeleteBasket(basket.UserName);

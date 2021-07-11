@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -9,8 +9,8 @@ namespace Ordering.API.Extensions
 {
     public static class HostExtensions
     {
-        public static IHost MigrateDatabase<TContext>(this IHost host,
-                                            Action<TContext, IServiceProvider> seeder,
+        public static IHost MigrateDatabase<TContext>(this IHost host, 
+                                            Action<TContext, IServiceProvider> seeder, 
                                             int? retry = 0) where TContext : DbContext
         {
             int retryForAvailability = retry.Value;
@@ -44,8 +44,8 @@ namespace Ordering.API.Extensions
             return host;
         }
 
-        private static void InvokeSeeder<TContext>(Action<TContext, IServiceProvider> seeder,
-                                                    TContext context,
+        private static void InvokeSeeder<TContext>(Action<TContext, IServiceProvider> seeder, 
+                                                    TContext context, 
                                                     IServiceProvider services)
                                                     where TContext : DbContext
         {

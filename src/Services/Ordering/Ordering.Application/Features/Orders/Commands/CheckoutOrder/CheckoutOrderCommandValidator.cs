@@ -1,10 +1,10 @@
-﻿using FluentValidation;
+using FluentValidation;
 
-namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
+namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
 {
-    public class UpdateOrderCommandValidator : AbstractValidator<UpdateOrderCommand>
+    public class CheckoutOrderCommandValidator : AbstractValidator<CheckoutOrderCommand>
     {
-        public UpdateOrderCommandValidator()
+        public CheckoutOrderCommandValidator()
         {
             RuleFor(p => p.UserName)
                 .NotEmpty().WithMessage("{UserName} is required.")
@@ -16,7 +16,7 @@ namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
 
             RuleFor(p => p.TotalPrice)
                 .NotEmpty().WithMessage("{TotalPrice} is required.")
-                .GreaterThan(0).WithMessage("{TotalPrice} should be greater than zero.");
+                .GreaterThan(0).WithMessage("{TotalPrice} should be greater than zero.");            
         }
     }
 }
